@@ -27,7 +27,14 @@ export default {
           id:2,
           title: "todo two",
           completed: false
+        },
+         {
+          id:3,
+          title: "todo three",
+          completed: false
         }
+
+
       ]
     }
   }
