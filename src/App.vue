@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header />
+    <AddTodo v-on:add-todo="addTodo" />
    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
    
   </div>
@@ -9,6 +10,7 @@
 <script>
 import Header from './components/layout/Header';
 import Todos from './components/Todos';
+import AddTodo from './components/AddTodo';
 
 
 
@@ -16,35 +18,24 @@ export default {
   name: 'app',
   components: {
     Header,
-    Todos
+    Todos,
+    AddTodo
   },
   data(){
     return {
-      todos: [
-        {
-          id:1,
-          title: "todo one",
-          completed: true
-        },
-        {
-          id:2,
-          title: "todo two",
-          completed: false
-        },
-         {
-          id:3,
-          title: "todo three",
-          completed: false
-        }
-
-
-      ]
+      todos: []
     }
   },
   methods: {
     deleteTodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
+    },
+    addTodo(newTodo) {
+      this.todos = [...this.todos, newTodo];
     }
+  },
+  created() {
+    
   }
 }
 </script>
